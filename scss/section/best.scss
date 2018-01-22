@@ -1,0 +1,56 @@
+.best {
+    background: url("../images/bg/best_bg.png") center center no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.title--black {
+    color: #2f3234;
+}
+
+.advantage {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.advantage__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+    padding: 5px;
+}
+
+.advantage__img {
+    width: auto;
+    height: 100px;
+    display: block;
+    text-align: center;
+}
+
+.advantage__icon {
+    width: auto;
+    height: 95%;
+}
+
+.advantage__title {
+    color: $dark;
+    font-family: Lifehack;
+    text-align: center;
+    max-width: 215px;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.advantage__text {
+    color: #696868;
+    font-family: UbuntuLight;
+    text-align: center;
+    max-width: 330px;
+    line-height: 1.8;
+    @include font-size(14px);
+}

@@ -1,0 +1,54 @@
+.feedback-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feedback-item {
+    width: 25%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 50vh;
+}
+
+.feedback-item__content {
+    padding: 45px 20px;
+    background-color: rgba(20, 20, 20, 0.7);
+    height: 100%;
+    opacity: 0;
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+}
+
+.feedback-item__name {
+    font-family: Gagalin;
+    margin-bottom: 15px;
+    color: $white;
+}
+
+.feed-text {
+    font-family: UbuntuLight;
+    line-height: 1.6;
+    padding: 10px 0;
+    @include font-size(14px);
+    color: $white;
+}
+
+.btn--grey {
+    background-color: $dark;
+    padding: 10px 15px;
+    opacity: 1;
+    &:hover {
+        background-color: darken($dark, 10%);
+        cursor: pointer;
+        opacity: 1;
+    }
+}
+

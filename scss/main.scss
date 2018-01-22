@@ -1,0 +1,17 @@
+//config
+
+@import "config/variable.scss";
+@import "config/mixins.scss";
+
+//base
+
+@import "layout/font.scss";
+@import "layout/base.scss";
+@import "layout/adjustment.scss";
+
+//section
+
+@import "section/first.scss";
+@import "section/best.scss";
+@import "section/feedback.scss";
+@import "section/team.scss";
