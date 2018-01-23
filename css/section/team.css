@@ -1,6 +1,12 @@
-.first {
+.team {
   background-image: url("../images/bg/team_bg.png");
   background-position: 50%;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative; }
+
+.team-container {
+  background-color: rgba(20, 20, 20, 0.7);
+  position: absolute;
+  right: 0;
+  height: 100%; }
