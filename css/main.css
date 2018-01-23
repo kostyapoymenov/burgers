@@ -167,6 +167,8 @@ a {
   margin: 0; }
   .main-title.title--black {
     color: #2f3234; }
+  .main-title.title--white {
+    color: #ffffff; }
 
 .section-title {
   margin-top: 8%;
@@ -513,5 +515,88 @@ a {
 .team-accordeon__post {
   font-weight: 600;
   margin-bottom: 1rem; }
+
+.menu {
+  background-image: url("../images/bg/menu_bg.jpg");
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: 50%; }
+  .menu .main-title {
+    position: absolute;
+    top: 15%;
+    left: 7%; }
+
+.accordeon-menu {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(49, 52, 54, 0.9);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.accordeon-menu__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .accordeon-menu__item.accordeon-menu--active .accordeon-menu__title {
+    color: #f8b43a; }
+  .accordeon-menu__item.accordeon-menu--active .accordeon-menu__text {
+    width: auto;
+    padding: 8% 5%; }
+
+.accordeon-menu__head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 5rem;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative; }
+  .accordeon-menu__head:hover {
+    cursor: pointer; }
+    .accordeon-menu__head:hover .accordeon-menu__title {
+      color: #f8b43a; }
+
+.accordeon-menu__title {
+  font-family: Gagalin;
+  font-weight: 300;
+  font-size: 40px;
+  font-size: 2.5rem;
+  color: #ffffff;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  margin-bottom: 100%;
+  width: 100%; }
+
+.accordeon-menu--bg {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute; }
+
+.accordeon-menu__text {
+  line-height: 1.7;
+  width: 0;
+  overflow: hidden; }
+
+.accordeon-menu__parag {
+  color: #ffffff;
+  font-size: 16px;
+  font-size: 1rem;
+  font-family: Ubuntu;
+  font-weight: 100; }
 
 /*# sourceMappingURL=main.css.map */

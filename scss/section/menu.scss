@@ -1,0 +1,83 @@
+.menu {
+  background-image: url("../images/bg/menu_bg.jpg");
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: 50%;
+  .main-title {
+    position: absolute;
+    top: 15%;
+    left: 7%;
+  }
+}
+
+.accordeon-menu {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(49, 52, 54, 0.9);
+  display: flex;
+}
+
+.accordeon-menu__item {
+  display: flex;
+  &.accordeon-menu--active{
+    .accordeon-menu__title{
+      color: $orange;
+    }
+    .accordeon-menu__text {
+      width:auto;
+      padding: 8% 5%;
+    }
+  }
+}
+
+.accordeon-menu__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 5rem;
+  height:100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  &:hover {
+    cursor: pointer;
+    .accordeon-menu__title{
+      color: $orange;
+    }
+  }
+}
+
+.accordeon-menu__title {
+  font-family: Gagalin;
+  font-weight: 300;
+  @include font-size(40px);
+  color: $white;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  margin-bottom: 100%;
+  width: 100%;
+}
+
+.accordeon-menu--bg {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.accordeon-menu__text {
+  line-height: 1.7;
+  width: 0;
+  overflow: hidden;
+}
+
+.accordeon-menu__parag {
+  color: $white;
+  @include font-size(16px);
+  font-family: Ubuntu;
+  font-weight: 100;
+}
