@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    height: 100%;
 }
 
 .feedback-item {
@@ -13,7 +14,8 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    min-height: 50vh;
+    min-height: 50%;
+    filter: grayscale(100%);
 }
 
 .feedback-item__content {
@@ -21,6 +23,7 @@
     background-color: rgba(20, 20, 20, 0.7);
     height: 100%;
     opacity: 0;
+    transition: .3s;
     &:hover {
         opacity: 1;
         cursor: pointer;

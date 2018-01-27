@@ -40,6 +40,23 @@ a {
     }
 }
 
+textarea {
+    resize: none;
+}
+
+input, textarea {
+    color: $dark;
+    @include font-size(14px);
+    font-family: Ubuntu;
+    font-weight: 100;
+    outline:none;
+    border: 2px solid transparent;
+    &:focus {
+        overflow: hidden;
+        border:2px solid $orange;
+    }
+}
+
 .visuallyhidden {
     position: absolute;
 
