@@ -26,11 +26,11 @@
 }
 
 .container {
-    width: 100%;
-    max-width: 940px;
+    width: 95%;
+    max-width: rem(940px);
+    min-height: 40.625rem;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     flex:1;
@@ -41,7 +41,15 @@
     align-items: center;
     justify-content: center;
     flex: 1;
-    padding-bottom: 10%;
+
+    @include tablets {
+        flex-direction: column;
+
+    }
+
+    @include phones {
+        flex-direction: column;
+    }
 }
 
 .btn {
@@ -53,7 +61,7 @@
     &.btn--red {
         background-color: $red;
         @include font-size(13px);
-        padding: 12px 20px;
+        padding: rem(12px) rem(20px);
         &:hover {
             background-color: darken($red, 10%);
             cursor: pointer;
@@ -62,7 +70,7 @@
 
     &.btn--grey {
         background-color: $dark;
-        padding: 10px 15px;
+        padding: rem(10px) rem(15px);
         opacity: 1;
         &:hover {
             background-color: darken($dark, 10%);
@@ -85,10 +93,14 @@
     &--white {
         color: $white;
     }
-}
 
-.section-title {
-    margin-top: 8%;
-    margin-bottom: 55px;
+    @include tablets {
+        text-align: center;
+    }
+
+    @include phones {
+        text-align: center;
+        font-size: rem(63px);
+    }
 }
 

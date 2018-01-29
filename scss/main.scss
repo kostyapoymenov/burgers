@@ -3,11 +3,17 @@
 @import "config/variable.scss";
 @import "config/mixins.scss";
 
+//resolution
+$tablets: 768px;
+$phones: 480px;
 //base
 
 @import "layout/font.scss";
 @import "layout/base.scss";
 @import "layout/adjustment.scss";
+
+//media
+@import "media/media.scss";
 
 //section
 
@@ -19,4 +25,6 @@
 @import "section/map.scss";
 @import "section/order.scss";
 @import "section/footer.scss";
+@import "section/hamburger.scss";
+@import "section/points.scss";
 

@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   position: relative;
   .main-title {
-    margin-bottom: 2.3rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -17,12 +17,23 @@
   right: 0;
   bottom: 0;
   left:50%;
-  padding: 6% 2% 0 7.5%;
+  padding: 8% 2% 0 9.5%;
+
+  @include tablets {
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
 }
 
 .team-block {
   display: flex;
   flex-direction: column;
+
+  @include tablets {
+
+  }
 }
 
 .team-accordeon {
@@ -31,7 +42,7 @@
 
 .team-accordeon__item {
   color: $white;
-  margin-bottom: 2.5rem;
+  margin-bottom: rem(15px);
   &.team-accordeon--active{
     .team-accordeon__title{
     color: $orange;
@@ -44,6 +55,11 @@
       bottom:1px;
     }
   }
+
+  @include tablets {
+    text-align: center;
+    font-size: rem(24px);
+  }
 }
 
 .team-accordeon__title {
@@ -52,6 +68,11 @@
   text-transform: uppercase;
   font-weight: 100;
   position: relative;
+
+  @include tablets {
+    display: inline-block;
+  }
+
   &:hover{
     color: $orange;
     cursor: pointer;
@@ -60,19 +81,24 @@
   &:before {
     content: '';
     position: absolute;
-    left: -22px;
-    bottom: 6px;
+    left: rem(-22px);
+    bottom: rem(6px);
     border: 5px solid transparent;
     border-bottom: 8px solid #f8b43a;
   }
 }
 
 .team-accordeon__content {
-  padding-top: 1rem;
+  padding-top: rem(15px);
   position: relative;
   display: flex;
   overflow: hidden;
   height: 0;
+
+  @include tablets {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .team-accordeon__avatar {
@@ -83,6 +109,7 @@
   border: 1px solid $white;
   border-radius: 50%;
   overflow: hidden;
+  margin-bottom: rem(25px);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -96,13 +123,30 @@
   display: inline-block;
   flex: 3;
   padding-left: 1.25rem;
-  padding-right: 5rem;
+
+  @include tablets {
+    padding-left: 5.6rem;
+    padding-right: 5.6rem;
+  }
+
+  @include phones {
+    padding: 0;
+  }
 }
 
 .team-accordeon__post, .team-accordeon__text {
   font-family: Ubuntu;
   @include font-size(14px);
   font-weight: 100;
+
+  @include tablets {
+    font-size: rem(14px);
+    padding: 0px 23%;
+  }
+
+  @include phones {
+    padding: 0px 10%;
+  }
 }
 
 .team-accordeon__post {

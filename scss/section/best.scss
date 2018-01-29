@@ -4,6 +4,18 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    .section-title {
+        margin-bottom: 2rem;
+    }
+
+    .main__content {
+        padding-bottom: 3%;
+    }
+    
+    @include tablets {
+        background-image: url("../images/bg/best_bg_ipad.jpg");
+    }
+
 }
 
 .title--black {
@@ -22,12 +34,32 @@
     flex-direction: column;
     align-items: center;
     width: 33%;
-    padding: 5px;
+    padding: rem(5px);
+
+    @include tablets {
+        padding: 0.3125rem 10px;
+    }
+
+    @include phones {
+        flex-direction: row;
+        width:100%;
+    }
+}
+
+.advantage__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include phones {
+        align-items: left;
+        padding-left: rem(20px);
+    }
 }
 
 .advantage__img {
     width: auto;
-    height: 100px;
+    height: rem(90px);
     display: block;
     text-align: center;
 }
@@ -35,22 +67,35 @@
 .advantage__icon {
     width: auto;
     height: 95%;
+    @include phones {
+        width:80px;
+    }
 }
 
 .advantage__title {
     color: $dark;
     font-family: Lifehack;
+    font-weight: 100;
     text-align: center;
-    max-width: 215px;
-    margin-bottom: 10px;
+    max-width: rem(215px);
     line-height: 1.1;
+
+    @include phones {
+        text-align: left;
+    }
 }
 
 .advantage__text {
     color: #696868;
     font-family: UbuntuLight;
     text-align: center;
-    max-width: 330px;
+    max-width: rem(330px);
     line-height: 1.8;
     @include font-size(14px);
+
+
+    @include phones {
+        text-align: left;
+        font-size: rem(14px);
+    }
 }

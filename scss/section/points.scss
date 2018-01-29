@@ -1,0 +1,56 @@
+.points {
+  position: fixed;
+  top: 5rem;
+  right: 4rem;
+  @include tablets {
+    display: none;
+  }
+  @include phones {
+    display: none;
+  }
+}
+
+.points__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.points__item {
+  margin-bottom: 5px;
+  &.points__item-active {
+    .points__link {
+      &:after {
+        opacity:1;
+      }
+    }
+  }
+}
+
+.points__link {
+  display: block;
+  width: rem(15px);
+  height: rem(15px);
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    height: rem(16px);
+    width: rem(16px);
+    border: 1px solid $white;
+    border-radius: 50%;
+    opacity:0;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    left: calc(50% - 2px);
+    top: calc(50% - 2px);
+    height: rem(6px);
+    width: rem(6px);
+    background-color: $white;
+    border-radius: 50%;
+  }
+}
+

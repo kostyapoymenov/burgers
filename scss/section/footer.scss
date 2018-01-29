@@ -17,10 +17,25 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+  width: 95%;
+  max-width: rem(940px);
+  margin: 0 auto;
+  align-items: center;
+  flex:1;
+
+  @include phones {
+    flex-direction: column;
+    text-align: center;
+  }
+
 }
 
 .footer-block {
   width: 50%;
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .footer__address {
@@ -28,6 +43,10 @@
   @include font-size(14px);
   font-family: Ubuntu;
   font-weight: 100;
+
+  @include phones {
+    font-size: 14px;
+  }
 }
 
 .footer__telephone {
@@ -35,11 +54,30 @@
   @include font-size(14px);
   font-family: Ubuntu;
   font-weight: 600;
+  position: relative;
+  padding-left: 20px;
+  &:before {
+    content: "";
+    position: absolute;
+    left:0;
+    top:0;
+    background-image: url("/images/icons/phone.svg");
+    height:13px;
+    width:13px;
+  }
+
+  @include phones {
+    font-size: 14px;
+  }
 }
 
 .footer-social {
   width: 50%;
   text-align: right;
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .social__list {
