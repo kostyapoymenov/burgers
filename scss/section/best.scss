@@ -6,6 +6,10 @@
     position: relative;
     .section-title {
         margin-bottom: 2rem;
+
+        @include phones {
+            margin-bottom: 0;
+        }
     }
 
     .main__content {
@@ -14,6 +18,10 @@
     
     @include tablets {
         background-image: url("../images/bg/best_bg_ipad.jpg");
+    }
+
+    @include phones {
+        background-image: url("../images/bg/best_bg_phones.jpg");
     }
 
 }
@@ -27,6 +35,10 @@
     justify-content: flex-start;
     width: 100%;
     flex-wrap: wrap;
+
+    @include phones {
+        padding-bottom: 20%;
+    }
 }
 
 .advantage__item {
@@ -82,6 +94,7 @@
 
     @include phones {
         text-align: left;
+        margin-bottom: 5px;
     }
 }
 

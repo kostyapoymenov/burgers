@@ -1,3 +1,18 @@
+const hamburgerBtn = document.querySelector('.hamburger-menu__btn'),
+      hamburgerClose = document.querySelector('.hamburger-btn__close'),
+      hamburgerMenu = document.querySelector('.hamburger-menu');
+
+hamburgerBtn.addEventListener('click', function(){
+    hamburgerMenu.classList.add('hamburger-menu--active');
+    document.body.classList.add('blocking');
+});
+
+hamburgerClose.addEventListener('click', function(){
+    hamburgerMenu.classList.remove('hamburger-menu--active');
+    document.body.classList.remove('blocking');
+});
+
+
 ymaps.ready(init);
 
 function init() {
@@ -47,3 +62,4 @@ function init() {
         .add(placemark3)
         .add(placemark4);
 }
+

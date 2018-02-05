@@ -1,7 +1,6 @@
 .hamburger-menu__btn {
   display: flex;
   position: fixed;
-  z-index: 5;
 
   @include tablets {
     top: 2.3rem;
@@ -13,18 +12,6 @@
     right: 1.4rem;
   }
 
-  &.hamburger-menu--active {
-    .hamburger-menu__icon {
-      background-color: transparent;
-      &:before {
-        transform: translateY(10px) translateX(0) rotate(45deg);
-      }
-      &:after {
-        transform: translateY(-6px) translateX(0) rotate(-45deg);
-      }
-    }
-  }
-
 }
 
 .hamburger-menu__icon {
@@ -34,7 +21,6 @@
   border-radius: 5px;
   margin: 8px 0;
   cursor: pointer;
-  transition: transform .3s ease;
 
   &:before {
     content: "";
@@ -70,6 +56,7 @@
     right:0;
     left:0;
     bottom: 0;
+    opacity: 1;
   }
 
   .hamburger-menu__link {
@@ -78,6 +65,38 @@
     text-transform: uppercase;
     font-family: UbuntuRegular;
     font-weight: 500;
+  }
+}
+
+.hamburger-btn__close {
+  display: flex;
+  position: fixed;
+  top: 3.1rem;
+  right: 3.5rem;
+}
+
+.hamburger-menu__close {
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: -4px;
+    width: 24px;
+    height: 4px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    transform: rotate(45deg);
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    width: 24px;
+    height: 4px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    transform: rotate(-45deg);
   }
 }
 
@@ -105,6 +124,10 @@
       height: 0;
     }
   }
+}
+
+.blocking {
+  overflow: hidden;
 }
 
 

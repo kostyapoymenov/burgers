@@ -17,7 +17,7 @@
   right: 0;
   bottom: 0;
   left:50%;
-  padding: 8% 2% 0 9.5%;
+  padding: 6% 2% 0 9.5%;
 
   @include tablets {
     left: 0;
@@ -43,6 +43,16 @@
 .team-accordeon__item {
   color: $white;
   margin-bottom: rem(15px);
+
+  .team-accordeon__title{
+    @include tablets {
+      font-size: 1.5rem;
+    }
+    @include phones {
+      font-size: 2rem;
+    }
+  }
+
   &.team-accordeon--active{
     .team-accordeon__title{
     color: $orange;
@@ -52,7 +62,11 @@
     }
     .team-accordeon__title:before {
       transform: rotate(180deg);
-      bottom:1px;
+      bottom: calc(50% - 3px);
+
+      @include tablets {
+        bottom: calc(50% - 5px);
+      }
     }
   }
 
@@ -82,9 +96,13 @@
     content: '';
     position: absolute;
     left: rem(-22px);
-    bottom: rem(6px);
+    bottom: calc(50% - 9px);
     border: 5px solid transparent;
-    border-bottom: 8px solid #f8b43a;
+    border-top: 8px solid #f8b43a;
+
+    @include tablets {
+      bottom: calc(50% - 9px);
+    }
   }
 }
 
@@ -135,9 +153,6 @@
 }
 
 .team-accordeon__post, .team-accordeon__text {
-  font-family: Ubuntu;
-  @include font-size(14px);
-  font-weight: 100;
 
   @include tablets {
     font-size: rem(14px);
