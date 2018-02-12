@@ -27,6 +27,7 @@
     }
     .accordeon-menu__text {
       width:auto;
+      opacity: 1;
       padding: 8% 6%;
       width: 33.75rem;
 
@@ -83,7 +84,9 @@
 .accordeon-menu__text {
   line-height: 1.7;
   width: 0;
+  opacity: 0;
   overflow: hidden;
+  transition: width .5s;
 }
 
 .accordeon-menu__parag {

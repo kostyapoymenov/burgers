@@ -59,6 +59,7 @@
     }
     .team-accordeon__content {
       height:auto;
+      opacity: 1;
     }
     .team-accordeon__title:before {
       transform: rotate(180deg);
@@ -99,6 +100,7 @@
     bottom: calc(50% - 9px);
     border: 5px solid transparent;
     border-top: 8px solid #f8b43a;
+    transition: ease-out .5s;
 
     @include tablets {
       bottom: calc(50% - 9px);
@@ -112,6 +114,8 @@
   display: flex;
   overflow: hidden;
   height: 0;
+  opacity: 0;
+  transition: ease-out .5s;
 
   @include tablets {
     flex-direction: column;
