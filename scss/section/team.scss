@@ -1,0 +1,155 @@
+.team {
+  background-image: url("../images/bg/team_bg.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  position: relative;
+  .main-title {
+    margin-bottom: 2rem;
+  }
+}
+
+.team-container {
+  background-color: rgba(49, 52, 54, 0.9);
+  position: absolute;
+  display: flex;
+  height: 100%;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left:50%;
+  padding: 8% 2% 0 9.5%;
+
+  @include tablets {
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+.team-block {
+  display: flex;
+  flex-direction: column;
+
+  @include tablets {
+
+  }
+}
+
+.team-accordeon {
+  padding: 0 2rem 0 1.25rem;
+}
+
+.team-accordeon__item {
+  color: $white;
+  margin-bottom: rem(15px);
+  &.team-accordeon--active{
+    .team-accordeon__title{
+    color: $orange;
+    }
+    .team-accordeon__content {
+      height:auto;
+    }
+    .team-accordeon__title:before {
+      transform: rotate(180deg);
+      bottom:1px;
+    }
+  }
+
+  @include tablets {
+    text-align: center;
+    font-size: rem(24px);
+  }
+}
+
+.team-accordeon__title {
+  font-family: Gagalin;
+  @include font-size(14px);
+  text-transform: uppercase;
+  font-weight: 100;
+  position: relative;
+
+  @include tablets {
+    display: inline-block;
+  }
+
+  &:hover{
+    color: $orange;
+    cursor: pointer;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: rem(-22px);
+    bottom: rem(6px);
+    border: 5px solid transparent;
+    border-bottom: 8px solid #f8b43a;
+  }
+}
+
+.team-accordeon__content {
+  padding-top: rem(15px);
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 0;
+
+  @include tablets {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.team-accordeon__avatar {
+  display: inline-block;
+  position: relative;
+  width: 6.25rem;
+  height: 6.25rem;
+  border: 1px solid $white;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: rem(25px);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.team-accordeon__img {
+  width: 100%;
+}
+
+.team-accordeon__info {
+  display: inline-block;
+  flex: 3;
+  padding-left: 1.25rem;
+
+  @include tablets {
+    padding-left: 5.6rem;
+    padding-right: 5.6rem;
+  }
+
+  @include phones {
+    padding: 0;
+  }
+}
+
+.team-accordeon__post, .team-accordeon__text {
+  font-family: Ubuntu;
+  @include font-size(14px);
+  font-weight: 100;
+
+  @include tablets {
+    font-size: rem(14px);
+    padding: 0px 23%;
+  }
+
+  @include phones {
+    padding: 0px 10%;
+  }
+}
+
+.team-accordeon__post {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
