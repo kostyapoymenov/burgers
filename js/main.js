@@ -1,6 +1,7 @@
 var hamburgerBtn = document.querySelector('.hamburger-menu__btn'),
-      hamburgerClose = document.querySelector('.hamburger-btn__close'),
-      hamburgerMenu = document.querySelector('.hamburger-menu');
+    hamburgerClose = document.querySelector('.hamburger-btn__close'),
+    hamburgerItem = document.getElementsByClassName('.hamburger-menu__item'),
+    hamburgerMenu = document.querySelector('.hamburger-menu');
 
 hamburgerBtn.addEventListener('click', function(){
     hamburgerMenu.classList.add('hamburger-menu--active');
@@ -14,6 +15,17 @@ hamburgerClose.addEventListener('click', function(){
     hamburgerBtn.style.display = 'block';
 });
 
+for(var a = 0; a < hamburgerItem.length; a++){
+    hamburgerItem[a].addEventListener('click', function(){
+        hamburgerMenu.classList.remove('hamburger-menu--active');
+        document.body.classList.remove('blocking');
+        hamburgerBtn.style.display = 'block';
+    });
+}
+
+
+
+// Consist block
 
     var consist = document.querySelector('.consist'),
         ingredientClose = document.querySelector('.consist-ingredient_close');
@@ -28,8 +40,6 @@ hamburgerClose.addEventListener('click', function(){
     consist.onmouseout = function() {
         consist.classList.remove('consist__active');
     };
-
-
 
 
 // Аккордеон команда
@@ -136,59 +146,106 @@ $(document).ready(function(){
     });
 });
 
+
+
 // OnePageScroll
 
-    // var screen = 0,
-    //     content = document.querySelector('#content'),
-    //     section = document.querySelector('.section'),
-    //     inscroll = false;
-    //
-    // // section.lastChild.classList.add('page__active');
-    // var containerActive = section.lastElementChild;
-    // containerActive.classList.add('page__active');
-    // console.log(containerActive);
-    // // $('.section:first-child').addClass('page__active');
-    //
-    // document.body.addEventListener('mousewheel', function(event) {
-    //     console.log(event.deltaY);
-    //
-    //     var activePage = section.querySelector('.page__active');
-    //
-    //     if(!inscroll){
-    //         inscroll = true;
-    //         if(event.deltaY > 0){
-    //             if(activePage.previousSibling.length){
-    //                 screen--;
-    //             }
-    //         } else {
-    //             if(activePage.nextSibling.length){
-    //                 screen++;
-    //             }
-    //         }
-    //     }
-    //     var position = screen * 100 + '%';
-    //     // section.eq(screen).classList.add('page__active').sibling().removeClass('page__active');
-    //     content.style.top = position;
-    //
-    //
-    //     setTimeout(function() {
-    //         inscroll = false;
-    //     }, 1300);
-    // });
-$("#content").onepage_scroll({
-    sectionContainer: "section",
-    easing: "ease",
+    var section = $('.section'),
+        display = $('#content'),
+        inScroll = false;
 
-    animationTime: 1000,
-    pagination: true,
-    updateURL: false,
-    beforeMove: function(index) {},
-    afterMove: function(index) {},
-    loop: false,
-    keyboard: true,
-    responsiveFallback: false,
-    direction: "vertical"
-});
+    var mobileDetect = new MobileDetect(window.navigator.userAgent);
+    var isMobile = mobileDetect.mobile();
+
+    var setActiveMenuItem = function(itemEq){
+        $('.points__item')
+            .eq(itemEq)
+            .addClass('points__item-active')
+            .siblings().removeClass('points__item-active');
+    }
+
+    var performTransition = function(sectionEq){
+      var position = (sectionEq * -100)+ '%';
+
+      if(inScroll) return;
+
+      inScroll = true;
+
+      section
+          .eq(sectionEq)
+          .addClass("active")
+          .siblings()
+          .removeClass("active");
+
+      display.css({
+          'transform' : `translate(0, ${position})`,
+          '-webkit-transform' : `translate(0, ${position})`
+      });
+
+      setTimeout(function (){
+          setActiveMenuItem(sectionEq);
+          inScroll = false;
+
+
+      }, 1300); // 1300 т.к. убираем инерцию
+
+    }
+
+    var scrollToSection = function (direction) {
+        var activeSection = section.filter('.active'),
+            nextSection = activeSection.next(),
+            prevSection = activeSection.prev();
+
+        if (direction == 'up' && prevSection.length){
+            performTransition(prevSection.index());
+        }
+
+        if(direction == 'down' && nextSection.length){
+            performTransition(nextSection.index());
+        }
+    }
+
+    $(document).on({
+        wheel: function(e) {
+            var deltaY = e.originalEvent.deltaY,
+                direction = deltaY > 0 ? 'down' : "up";
+
+                scrollToSection(direction);
+        },
+        keydown: function(e){
+            switch (e.keyCode) {
+                case 40 :
+                    scrollToSection('down');
+                    break;
+
+                case 38 :
+                    scrollToSection('up');
+                    break;
+            }
+        },
+        touchmove: function(e) {
+            e.preventDefault();
+        }
+    })
+
+    $('[data-scroll]').on('click', function(e){
+        e.preventDefault();
+
+        var target = parseInt($(e.currentTarget).attr('data-scroll'));
+
+        performTransition(target);
+
+    })
+
+    if (isMobile){
+        $(document).swipe({
+            swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+                var scrollDirection = direction === 'down' ? 'up' : 'down';
+                scrollToSection(scrollDirection);
+            }
+        });
+    }
+
 
 // Яндекс карты
 
@@ -241,4 +298,32 @@ function init() {
         .add(placemark3)
         .add(placemark4);
 }
+
+
+// Form
+
+$(document).ready(function () {
+
+    $('#main-form').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax('server.php', {
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function (data) {
+                $('.overlay').addClass('active');
+                $('.popup__text').text(data);
+            },
+            error: function (data) {
+                $('.overlay').addClass('active');
+                $('.popup__text').text(data);
+            }
+        })
+    });
+
+    $('.popup-block__btn').children('.btn').on('click', function(){
+        $('.overlay').removeClass('active');
+        $('#main-form')[0].reset();
+    })
+});
+
 

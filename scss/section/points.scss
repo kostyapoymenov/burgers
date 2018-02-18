@@ -1,128 +1,55 @@
-//.points {
-//  position: fixed;
-//  top: 5rem;
-//  right: 3rem;
-//  @include tablets {
-//    display: none;
-//  }
-//  @include phones {
-//    display: none;
-//  }
-//}
-//
-//.points__list {
-//  display: flex;
-//  flex-direction: column;
-//  justify-content: center;
-//  align-items: center;
-//}
-//
-//.points__item {
-//  margin-bottom: 5px;
-//  &.points__item-active {
-//    .points__link {
-//      &:after {
-//        opacity:1;
-//      }
-//    }
-//  }
-//}
-//
-//.points__link {
-//  display: block;
-//  width: rem(17px);
-//  height: rem(17px);
-//  position: relative;
-//  &:after {
-//    content: "";
-//    position: absolute;
-//    height: rem(17px);
-//    width: rem(17px);
-//    border: 1px solid $white;
-//    border-radius: 50%;
-//    opacity:0;
-//  }
-//  &:before {
-//    content: "";
-//    position: absolute;
-//    left: calc(50% - 2px);
-//    top: calc(50% - 2px);
-//    height: rem(5px);
-//    width: rem(5px);
-//    background-color: $white;
-//    border-radius: 50%;
-//  }
-//}
-
-
-
-
-.onepage-pagination {
+.points {
   position: fixed;
   top: 5rem;
   right: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   @include tablets {
     display: none;
   }
   @include phones {
     display: none;
   }
-  li{
-    margin-bottom: 5px;
-    &.points__item-active {
-      .points__link {
-        &:after {
-          opacity:1;
-        }
-      }
-    }
-    a{
-      display: block;
-      width: rem(17px);
-      height: rem(17px);
-      position: relative;
+}
+
+.points__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.points__item {
+  margin-bottom: 5px;
+  &.points__item-active {
+    .points__link {
       &:after {
-        content: "";
-        position: absolute;
-        height: rem(17px);
-        width: rem(17px);
-        border: 1px solid $white;
-        border-radius: 50%;
-        opacity:0;
-      }
-      &:before {
-        content: "";
-        position: absolute;
-        left: calc(50% - 2px);
-        top: calc(50% - 2px);
-        height: rem(5px);
-        width: rem(5px);
-        background-color: $white;
-        border-radius: 50%;
-      }
-      &.active{
-        &:after {
-          opacity:1;
-          top:0;
-          left:0;
-        }
-        &:before {
-          content: "";
-          position: absolute;
-          left: calc(50% - 3px);
-          top: calc(50% - 0px);
-          height: rem(6px);
-          width: rem(6px);
-          background-color: $white;
-          border-radius: 50%;
-          border: none;
-        }
+        opacity:1;
       }
     }
   }
 }
 
+.points__link {
+  display: block;
+  width: rem(17px);
+  height: rem(17px);
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    height: rem(17px);
+    width: rem(17px);
+    border: 1px solid $white;
+    border-radius: 50%;
+    opacity:0;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    left: calc(50% - 2px);
+    top: calc(50% - 2px);
+    height: rem(5px);
+    width: rem(5px);
+    background-color: $white;
+    border-radius: 50%;
+  }
+}

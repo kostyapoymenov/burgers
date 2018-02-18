@@ -1,0 +1,50 @@
+.overlay {
+  position: absolute;
+  opacity: 0;
+  left: 99999999px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(49, 52, 54, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: opacity .3s;
+  &.active {
+    opacity: 1;
+    left: 0;
+    transition: opacity .3s;
+  }
+}
+
+.popup  {
+  position: relative;
+  .popup__content {
+    width: 400px;
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 20px;
+    font: 16px Helvetica, sans-serif;
+    margin: 0;
+    color: $dark;
+    .popup__text {
+      color: $dark;
+      margin-bottom: rem(15px);
+      text-align: center;
+      @include phones{
+        display: block;
+      }
+    }
+    .popup-block__btn {
+      display: flex;
+      justify-content: center;
+    }
+    @include phones{
+      width:auto;
+    }
+  }
+  @include phones{
+    width:90%;
+  }
+}
