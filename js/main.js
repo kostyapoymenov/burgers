@@ -1,6 +1,6 @@
 var hamburgerBtn = document.querySelector('.hamburger-menu__btn'),
     hamburgerClose = document.querySelector('.hamburger-btn__close'),
-    hamburgerItem = document.getElementsByClassName('.hamburger-menu__item'),
+    hamburgerItem = document.getElementsByClassName('hamburger-menu__item'),
     hamburgerMenu = document.querySelector('.hamburger-menu');
 
 hamburgerBtn.addEventListener('click', function(){
@@ -26,105 +26,116 @@ for(var a = 0; a < hamburgerItem.length; a++){
 
 
 // Consist block
+function showConsist(){
+    var sliderItem = document.querySelectorAll('.slider__item');
 
-    var consist = document.querySelector('.consist'),
-        ingredientClose = document.querySelector('.consist-ingredient_close');
+    for (var i = 0; i < sliderItem.length; i++){
+        const consist = sliderItem[i].querySelector('.consist'),
+              ingredientClose = sliderItem[i].querySelector('.consist-ingredient_close');
 
-    ingredientClose.addEventListener('click', function (){
-        consist.classList.remove('consist__active');
-    });
+        ingredientClose.addEventListener('click', function (){
+            consist.classList.remove('consist__active');
+        });
 
-    consist.onmouseover = function() {
-        consist.classList.add('consist__active');
-    };
-    consist.onmouseout = function() {
-        consist.classList.remove('consist__active');
-    };
+        consist.onmouseover = function() {
+            consist.classList.add('consist__active');
+        };
+        consist.onmouseout = function() {
+            consist.classList.remove('consist__active');
+        };
+    }
 
+}
+showConsist();
 
 // Аккордеон команда
 
-var accordTitle = document.getElementsByClassName('team-accordeon__title');
+function showTeam(){
+    var accordTitle = document.getElementsByClassName('team-accordeon__title');
 
-for (var i = 0; i < accordTitle.length; i++){
-    accordTitle[i].addEventListener('click', function(){
-        if(!(this.parentElement.classList.contains('team-accordeon--active'))){
-            for (var i = 0; i < accordTitle.length; i++){
-                accordTitle[i].parentElement.classList.remove('team-accordeon--active');
+    for (var i = 0; i < accordTitle.length; i++){
+        accordTitle[i].addEventListener('click', function(){
+            if(!(this.parentElement.classList.contains('team-accordeon--active'))){
+                for (var i = 0; i < accordTitle.length; i++){
+                    accordTitle[i].parentElement.classList.remove('team-accordeon--active');
+                }
+                this.parentElement.classList.add('team-accordeon--active');
+            } else {
+                this.parentElement.classList.remove('team-accordeon--active');
             }
-            this.parentElement.classList.add('team-accordeon--active');
-        } else {
-            this.parentElement.classList.remove('team-accordeon--active');
-        }
-    })
+        })
+    }
 }
+showTeam();
 
 
 // Аккордеон меню
+function showAcordeonMenu(){
+    var menuHead = document.getElementsByClassName('accordeon-menu__head');
 
-var menuHead = document.getElementsByClassName('accordeon-menu__head');
-
-for (var i = 0; i < menuHead.length; i++) {
-    menuHead[i].addEventListener('click', function(){
-        if(!(this.parentElement.classList.contains('accordeon-menu--active'))){
-            for(i = 0; i < menuHead.length; i++){
-                menuHead[i].parentElement.classList.remove('accordeon-menu--active');
+    for (var i = 0; i < menuHead.length; i++) {
+        menuHead[i].addEventListener('click', function(){
+            if(!(this.parentElement.classList.contains('accordeon-menu--active'))){
+                for(i = 0; i < menuHead.length; i++){
+                    menuHead[i].parentElement.classList.remove('accordeon-menu--active');
+                }
+                this.parentElement.classList.add('accordeon-menu--active');
+            } else {
+                this.parentElement.classList.remove('accordeon-menu--active');
             }
-            this.parentElement.classList.add('accordeon-menu--active');
-        } else {
-            this.parentElement.classList.remove('accordeon-menu--active');
-        }
-    })
+        })
+    }
 }
-
+showAcordeonMenu();
 
 // Feedback popup
+function feedbackPopup(){
+    var feedbackBtn = document.getElementsByClassName('feedback-item__btn--popup'),
+        feedbackSection = document.querySelector('.feedback');
 
-var feedbackBtn = document.getElementsByClassName('feedback-item__btn--popup'),
-      feedbackSection = document.querySelector('.feedback');
+    function openOverlay() {
+        var overlayElement = document.createElement('div');
+        overlayElement.classList.add('overlay');
 
-function openOverlay() {
-    var overlayElement = document.createElement('div');
-    overlayElement.classList.add('overlay');
+        var popupElement = document.createElement('div');
+        popupElement.classList.add('feedback__popup');
 
-    var popupElement = document.createElement('div');
-    popupElement.classList.add('feedback__popup');
+        var contentElement = document.createElement('div');
+        contentElement.classList.add('feedback__popup_content');
 
-    var contentElement = document.createElement('div');
-    contentElement.classList.add('feedback__popup_content');
+        var closeElement = document.createElement('a');
+        closeElement.classList.add('close__btn');
+        closeElement.href = '#';
+        closeElement.addEventListener('click', function(e){
+            e.preventDefault();
+            feedbackSection.removeChild(overlayElement);
+        });
 
-    var closeElement = document.createElement('a');
-    closeElement.classList.add('close__btn');
-    closeElement.href = '#';
-    closeElement.addEventListener('click', function(e){
-        e.preventDefault();
-        feedbackSection.removeChild(overlayElement);
-    });
+        overlayElement.appendChild(popupElement);
+        popupElement.appendChild(closeElement);
+        popupElement.appendChild(contentElement);
 
-    overlayElement.appendChild(popupElement);
-    popupElement.appendChild(closeElement);
-    popupElement.appendChild(contentElement);
+        return overlayElement;
+    }
 
-    return overlayElement;
+    for(var i = 0; i < feedbackBtn.length; i++){
+        feedbackBtn[i].addEventListener('click', function() {
+            var feedItemContent = this.parentNode.previousElementSibling,
+                overlay = openOverlay();
+            feedbackSection.appendChild(overlay);
+            popupContAdd();
+
+            function popupContAdd(){
+                var feedContentAdd = feedItemContent.cloneNode(true);
+                document.querySelector('.feedback__popup_content').appendChild(feedContentAdd);
+            }
+        });
+    }
 }
-
-for(var i = 0; i < feedbackBtn.length; i++){
-    feedbackBtn[i].addEventListener('click', function() {
-        var feedItemContent = this.parentNode.previousElementSibling,
-            overlay = openOverlay();
-        feedbackSection.appendChild(overlay);
-        popupContAdd();
-
-        function popupContAdd(){
-            var feedContentAdd = feedItemContent.cloneNode(true);
-            document.querySelector('.feedback__popup_content').appendChild(feedContentAdd);
-        }
-    });
-}
+feedbackPopup();
 
 
 // Carousel
-
 $(document).ready(function(){
     var owl = $('.owl-carousel');
     owl.owlCarousel({
@@ -147,9 +158,8 @@ $(document).ready(function(){
 });
 
 
-
 // OnePageScroll
-
+function onePageScroll(){
     var section = $('.section'),
         display = $('#content'),
         inScroll = false;
@@ -165,29 +175,29 @@ $(document).ready(function(){
     }
 
     var performTransition = function(sectionEq){
-      var position = (sectionEq * -100)+ '%';
+        var position = (sectionEq * -100)+ '%';
 
-      if(inScroll) return;
+        if(inScroll) return;
 
-      inScroll = true;
+        inScroll = true;
 
-      section
-          .eq(sectionEq)
-          .addClass("active")
-          .siblings()
-          .removeClass("active");
+        section
+            .eq(sectionEq)
+            .addClass("active")
+            .siblings()
+            .removeClass("active");
 
-      display.css({
-          'transform' : `translate(0, ${position})`,
-          '-webkit-transform' : `translate(0, ${position})`
-      });
+        display.css({
+            'transform' : `translate(0, ${position})`,
+            '-webkit-transform' : `translate(0, ${position})`
+        });
 
-      setTimeout(function (){
-          setActiveMenuItem(sectionEq);
-          inScroll = false;
+        setTimeout(function (){
+            setActiveMenuItem(sectionEq);
+            inScroll = false;
 
 
-      }, 1300); // 1300 т.к. убираем инерцию
+        }, 1300); // 1300 т.к. убираем инерцию
 
     }
 
@@ -210,7 +220,7 @@ $(document).ready(function(){
             var deltaY = e.originalEvent.deltaY,
                 direction = deltaY > 0 ? 'down' : "up";
 
-                scrollToSection(direction);
+            scrollToSection(direction);
         },
         keydown: function(e){
             switch (e.keyCode) {
@@ -245,10 +255,10 @@ $(document).ready(function(){
             }
         });
     }
-
+}
+onePageScroll();
 
 // Яндекс карты
-
 ymaps.ready(init);
 
 function init() {
@@ -301,7 +311,6 @@ function init() {
 
 
 // Form
-
 $(document).ready(function () {
 
     $('#main-form').on('submit', function (e) {
